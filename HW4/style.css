@@ -1,0 +1,148 @@
+body{
+    background-color: rgb(245, 229, 202);
+    background-image: url("favpng_cartoon-vampire.png");
+    background-size: 50%;
+    background-position: 50pt;
+    background-position-x: center;
+    background-position-y: top;
+    margin: 0%;
+    background-repeat: no-repeat;
+}
+
+.group-title{
+    display: block;
+    block-size: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-top: 0%;
+}
+
+.login-button{
+    margin-top: 1vw;
+    margin-left: 2vw;
+    position: absolute;
+    padding: 3px;
+    border-radius: 15%;
+    background-color: brown;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.theme-button{
+    margin-top: 1vw;
+    margin-left: 2vw;
+    position: absolute;
+    right: 100px;
+    padding: 3px;
+    border-radius: 15%;
+    background-color: brown;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.print-button{
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 100px;
+    left: 900px;
+    position: absolute;
+    padding: 3px;
+    border-radius:15px;
+    background-color: brown;
+    font-size: 20px;
+    color:whitesmoke;
+}
+
+.gen-button{
+    padding: 3px;
+    border-radius:15px;
+    background-color: brown;
+    font-size: 20px;
+    color:whitesmoke;
+}
+
+.email-button{
+    margin-top: 0vw;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    right: 100px;
+    padding: 3px;
+    border-radius: 15%;
+    background-color: brown;
+    font-size: 20px;
+    color: whitesmoke;
+    bottom: 10px;
+}
+
+p {
+    text-align: center;
+    font-size: 20px;
+    font-family:monospace;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+name {
+    margin-top: 1%;
+    font-size: 20px;
+    position: absolute;
+}
+
+bodyText{
+    font-size: 20px;
+    position: absolute;
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+answerprompt{
+    margin-top: 6%;
+    font-size: 20px;
+    position: absolute;
+    font-weight: 100;
+}
+
+.darkTheme{
+    background-color: black;
+}
+
+.tableTheme{
+    margin-top: 1vw;
+    margin-left: 2vw;
+    position: absolute;
+    right: 15px;
+    padding: 5px;
+    border-radius: 5%;
+    background-color: brown;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.container{
+    margin-top: 1vw;
+    margin-left: 2vw;
+    position: absolute;
+    padding: 3px;
+    border-radius: 15%;
+    font-size: 20px;
+}
+
+.chart-style{
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 50px;
+    left: 625px;
+    position: absolute;
+    padding: 2px;
+    border-radius: 10px;
+    background-color: brown;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+
+
+

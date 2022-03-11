@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Vampire Application</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type = "text/css" href="style.css">
+    <meta name = "viewport" content="width=device-width, initial-scale-1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="code.js" type="text/javascript"></script>
+
+<style>
+
+    #h1_id{
+        color: rgb(89, 0, 255);
+        text-align: center;
+        text-shadow: black;  
+        font-style: oblique;
+        font-family: cursive;
+    }
+
+    p {
+        font-size: medium;
+        text-align: center;
+        font-style: italic;
+        font-size: 15px;
+        font-family:monospace;
+        color:black;
+        text-shadow: red;
+    }
+
+    p1{
+        text-align: left;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(111, 41, 224);
+        overflow: hidden;
+    }
+
+    li {
+        float: left 
+    }
+
+    li a{
+        display: block;
+        color: whitesmoke;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    li a.active{
+        background-color: rgb(255, 184, 60);
+        color: white;
+    }
+
+    li a.hover:not(.active){
+        background-color: black;
+        color: white;
+    }
+
+</style>
+</head>
+
+<body>
+
+    <link rel = "stylesheet" type="text/css" href="style.css">  
+            <ul>
+                <li>
+                    <a href = "intro.html"> INTRODUCTIONS</a>
+                </li>
+                <li>
+                    <a href= "test.html">VAMPIRE TEST</a>
+                </li>
+                <li>
+                    <a class = "active" href= "results.html">RESULTS</a>
+                </li>
+            </ul>
+<div>
+    <img src="resultsP.png" width = "50%" height="50" class="group-title">
+    <div id="chart_div" class="chart-style">
+    </div>
+    <button type = "button" onclick= "email();" class="email-button">EMAIL RESULTS!</button>
+</div>
+</body>

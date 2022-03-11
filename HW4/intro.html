@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Is My Classmate a Vampire?</title>
+    <link rel="stylesheet" type = "text/css" href="style.css">
+    
+<style>
+    #h1_id{
+        color: rgb(89, 0, 255);
+        text-align: center;
+        text-shadow: black;  
+        font-style: oblique;
+        font-family: cursive;
+        margin-top: 0%;
+    }
+
+    p1{
+        text-align: left;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(111, 41, 224);
+        overflow: hidden;
+    }
+
+    li {
+        float: left 
+    }
+
+    li a{
+        display: block;
+        color: whitesmoke;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    li a.active{
+        background-color: rgb(255, 184, 60);
+        color: white;
+    }
+
+    li a.hover:not(.active){
+        background-color: black;
+        color: white;
+    }
+</style>
+
+<script src = "code.js" type = "text/javascript"></script>
+
+</head>
+
+<ul>
+    <li>
+        <a class = "active" href = "intro.html"> INTRODUCTIONS</a>
+    </li>
+    <li>
+        <a href= "test.html">VAMPIRE TEST</a>
+    </li>
+    <li>
+        <a href= "results.html">RESULTS</a>
+    </li>
+</ul>
+
+    <body>
+        <div>
+            <button type="button" id = "loginButton" onclick="login()"; class="login-button"> LOGIN/SIGNUP</button><br>
+        </div>
+        <div>
+            <button type="button" id = "themeColor" onclick="changeTheme()"; class="theme-button"> LIGHT/DARK</button><br>
+        </div>
+        <div>
+            <img src="newTitle.png" width = "50%" height="50" class="group-title">
+        </div>
+
+        <h1 id = "h1_id"> Introductions </h1>
+        <p>
+            Hello, I’m Juan from Group 9. I have really enjoyed learning about Wep App thus far and excited to learn more. I too may or may not be a vampire! :)<br>
+
+            <br> My name is Brandon from our web applications class and I am part of group 9. Web apps has been one of my favorite classes I’ve taken so far since I’ve decided
+            I want to work in web applications as a career once I graduate. I like playing video games and watching soccer. Also I may or may not be a vampire ;). <br>
+            
+            <br>Hi, I’m Ahmed from Group 9 in Web Applications. Web applications has been one of my favorite courses I’ve taken. I have a keen interest in design 
+            and this course pairs perfectly with that. I may or may not be a vampire. <br>
+        </p>
+</div> 
+<body>
+</html>
+ 

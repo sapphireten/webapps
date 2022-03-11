@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Is My Classmate a Vampire?</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+    
+    #h1_id{
+        color: rgb(89, 0, 255);
+        text-align: center;
+        text-shadow: black;  
+        font-style: oblique;
+        font-family: cursive;
+    }
+
+    p1{
+        text-align: left;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(111, 41, 224);
+        overflow: hidden;
+    }
+
+    li {
+        float: left 
+    }
+
+    li a{
+        display: block;
+        color: whitesmoke;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    li a.active{
+        background-color: rgb(255, 184, 60);
+        color: white;
+    }
+
+    li a.hover:not(.active){
+        background-color: black;
+        color: white;
+    }
+
+</style>
+
+<script src = "code.js" type = "text/javascript"></script>
+
+</head>
+
+<ul>
+    <li>
+        <a href = "intro.html"> INTRODUCTIONS</a>
+    </li>
+    <li>
+        <a class = "active" href= "test.html">VAMPIRE TEST</a>
+    </li>
+    <li>
+        <a href= "results.html">RESULTS</a>
+    </li>
+</ul>
+
+    <body>
+
+        <link rel = "stylesheet" type="text/css" href="style.css">  
+
+        <div class = "container">
+            <form id = "testForm">
+                <name>
+                    <div class="form-row">
+                        <div class = "form-group col-md-8">
+                            <label for ="classmatename">Enter Vampire Suspect's Name Here:<br></label>
+                            &emsp; <input type = "text" class="form-control" id="firstName" placeholder="First Name"><br>
+                            &emsp; <input type = "text" class="form-control" id="middleName" placeholder="Middle Name"> <br>
+                            &emsp; <input type = "text" class="form-control" id="lastName" placeholder="Last Name">
+                        </div> 
+                    </div>
+                    <div class = "form-row">
+                        <div class = "form-group col-md-12">         
+                            <div class="checkbox">
+                                <label>
+                                    Does your classmate get scared when the word garlic is mentioned?<br><br>
+                                    &emsp; <input type="checkbox" id = "garlicCheckbox"> <bodyText>YES, SCAREDY CAT!</bodyText>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "form-row">
+                        <div class = "form-group col-md-12">         
+                            <div class="checkbox">
+                                <label>
+                                    Does your classmate have eye-shadow?<br><br>
+                                    &emsp; <input type="checkbox" id = "shadowCheckbox"> <bodyText>YES, SO MUCH EYE-SHADOW!</bodyText><br>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class = "form-row">
+                        <div class = "form-group col-md-12">         
+                            <div class="checkbox">
+                                <label>
+                                    Does your classmate have a pale complexion? <br><br>
+                                    &emsp; <input type="checkbox" id = "paleCheckbox"><bodyText>YES, PALE AS PAPER</bodyText><br>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class = "form-row">
+                        <div class = "form-group col-md-12">
+                            <div class = "checkbox">
+                                <label>
+                                    Does your classmate wear red often? <br><br>
+                                    &emsp; <input type = "checkbox" id = "red_checkbox"><bodyText>YES, THEY LOVE RED!</bodyText>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class ="form-group">
+                        <label for = "mySelect"> </label>
+                        <select class = "form-control" id="mySelect">
+                            <option value = "1">Threshold Based</option>
+                            <option value = "2">Random Guess</option>
+                        </select>
+                    </div>
+                    <button type = "button" onclick="addClassmate()" class="gen-button">PRINT RESULTS</button>
+                    <br>
+                </name>
+
+            </form>
+        </div>
+<div class = "tableTheme">
+<table class = "table table-bordered" id = "table">
+    <caption>CLASSMATES TABLE</caption>
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Shadow</th>
+        <th>Pale</th>
+        <th>Garlic</th>
+        <th>Vampire?</th>
+    </tr>
+    </thead>
+    </table>
+    <script>
+    insertRow();
+    </script>
+    <button type="button"onclick="window.localStorage.clear(); location.reload();" class = "gen-button">CLEAN TABLE</button>
+    <button type = "button" onclick="deleteRow()" class="gen-button">DELETE ROW</button>
+    <button type = "button" onclick="deleteLastRow()" class="gen-button">DELETE LAST ROW</button>
+    <button type = "button" onclick="location.href='results.html';" class="gen-button">VIEW PIE CHART</button>
+</div>
+<body>
+</html>
+ 
