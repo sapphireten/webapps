@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv = "X-UA-Compatible" content="IE=edge"/>
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0"/>
+        <title>Pirateflix</title>
+        <link rel = "stylesheet" href="style.css">
+    </head>
+
+    <body style="background-color: rgb(255, 192, 32);">
+
+        <div class = "toolbar" id = "toolbar">
+            <img src = "mov/off.png" class = "toolbar_logo">
+            <div class = "right_icons">
+                <img src = "mov/search.png" title = "search" class = "toolbar_signin">
+                <a href="home.html">
+                    <img src = "mov/home.png"  title = "Home" class = "toolbar_signin"></a>
+                <a class = "active" href="list.html">
+                    <img src = "mov/clapperboard.png" title = "My List" class="toolbar_signin"></a>
+                <a href="about.html">
+                    <img src = "mov/ab.png" title = "More Info" class = "toolbar_signin"></a>
+            </div>
+        </div>
+
+        <br><br><br><br>
+        <div class="row_list">
+            <h2>My Movie List</h2>
+            <div class = "movie_rows_list">
+                <img src = "mov/wendys.jpg"  class = "movie_row">
+                <img src = "mov/mrclean.jpg" class = "movie_row">
+                <img src = "mov/systemfailure.jpg" class = "movie_row">
+                <img src = "mov/littlestcaesar.jpg" class = "movie_row">
+                <img src = "mov/energizer.jpg" class = "movie_row">
+                <img src = "mov/freddy.jpg" class = "movie_row">
+                <img src = "mov/childrenofcorn.jpg" class = "movie_row">
+                <img src = "mov/fasttoys.jpg"  class = "movie_row">
+                <img src = "mov/finallevel.jpg" class = "movie_row">
+                <img src = "mov/woody.jpg" class = "movie_row">
+            </div>
+        </div>
+
+        <div class="row_list">
+            <h2>Empty List</h2>
+            <div class = "movie_rows_list">
+                <img src = "mov/wendys.jpg"  class = "movie_row">
+                <img src = "mov/mrclean.jpg" class = "movie_row">
+                <img src = "mov/systemfailure.jpg" class = "movie_row">
+                <img src = "mov/littlestcaesar.jpg" class = "movie_row">
+                <img src = "mov/energizer.jpg" class = "movie_row">
+                <img src = "mov/freddy.jpg" class = "movie_row">
+                <img src = "mov/childrenofcorn.jpg" class = "movie_row">
+                <img src = "mov/fasttoys.jpg"  class = "movie_row">
+                <img src = "mov/finallevel.jpg" class = "movie_row">
+                <img src = "mov/woody.jpg" class = "movie_row">
+            </div>
+        </div>
+
+        <div class="row_list">
+            <h2>Watched List Maybe?</h2>
+            <div class = "movie_rows_list">
+                <img src = "mov/wendys.jpg"  class = "movie_row">
+                <img src = "mov/mrclean.jpg" class = "movie_row">
+                <img src = "mov/systemfailure.jpg" class = "movie_row">
+                <img src = "mov/littlestcaesar.jpg" class = "movie_row">
+                <img src = "mov/energizer.jpg" class = "movie_row">
+                <img src = "mov/freddy.jpg" class = "movie_row">
+                <img src = "mov/childrenofcorn.jpg" class = "movie_row">
+                <img src = "mov/fasttoys.jpg"  class = "movie_row">
+                <img src = "mov/finallevel.jpg" class = "movie_row">
+                <img src = "mov/woody.jpg" class = "movie_row">
+            </div>
+        </div>
+
+        <script>
+            const nav = document.getElementById('toolbar');
+            window.addEventListener('scroll', () => {
+                if(window.scrollY >= 100){
+                    nav.classList.add('nav_purple')
+                } 
+                else{
+                    nav.classList.remove('nav_purple')
+                }
+            })
+        </script>
+    </body>
+</html>

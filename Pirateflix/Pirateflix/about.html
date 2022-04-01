@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv = "X-UA-Compatible" content="IE=edge"/>
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0"/>
+        <title>Pirateflix</title>
+        <link rel = "stylesheet" href="style.css">
+    </head>
+    <!--DON'T FORGET TO MAKE THIS CLASS ACTIVE VICE VERSA-->
+    <body>
+        <div class = "toolbar" id = "toolbar">
+            <img src = "mov/off.png" class = "toolbar_logo">
+            <div class = "right_icons">
+                <img src = "mov/search.png" title = "search" class = "toolbar_signin">
+                <a href="home.html">
+                    <img src = "mov/home.png"  title = "Home" class = "toolbar_signin"></a>
+                <a href="list.html">
+                    <img src = "mov/clapperboard.png" title = "My List" class="toolbar_signin"></a>
+                <a class = "active" href="about.html">
+                    <img src = "mov/ab.png" title = "More Info" class = "toolbar_signin"></a>
+            </div>
+        </div>
+
+            <div class = "heading_about">
+                <div class = "heading_container_about">
+                    <h1 class = "heading_title_about"> More Information</h1>
+                    <div class = "heading_buttons_about">
+                        <button class="head_button">Play</button>
+                        <button class="head_button">My List</button>
+                    </div>
+                    <div class="head_desc_about">
+                        This movie contains additional information about this project. It includes the motivation behind the project, 
+                        additional information about the authors, and some behind the scenes of the sources used in the 
+                        creation of the project. 
+                    </div>
+                </div>
+                <div class="head_footer_about"></div>
+            </div>
+
+            <div class="row">
+                <h2>Project Motivation</h2>
+                <div class = "movie_rows">
+                    <img src = "mov/p1.jpg"  class = "movie_row">
+                    <img src = "mov/p3.jpg" class = "movie_row">
+                    <img src = "mov/p4.jpg" class = "movie_row">
+                    <img src = "mov/p5.jpg" class = "movie_row">
+                    <img src = "mov/p6.jpg" class = "movie_row">
+                    <img src = "mov/p7.jpg" class = "movie_row">
+                    <img src = "mov/p8.jpg" class = "movie_row">
+                    <img src = "mov/p9.jpg" class = "movie_row">
+                </div>
+            </div>
+
+            <div class="row">
+                <h2>Movie Producers</h2>
+                <div class = "movie_rows">
+                    <img src = "mov/juanmov.jpg"  class = "movie_row">
+                    <img src = "mov/brandonmov.png" class = "movie_row">
+                    <img src = "mov/ahmedmov.jpg" class = "movie_row">
+                </div>
+            </div>
+
+            <div class = "row">
+                <h2>Credits</h2>
+                <div class = "movie_rows">
+                    <img src = "mov/Netflix.jpg"  class = "movie_row">
+                    <img src = "mov/hulu.jpg" class = "movie_row">
+                    <img src = "mov/pixlr.jpg" class = "movie_row">
+                    <img src = "mov/gizmodo.jpg" class = "movie_row">
+                    <img src = "mov/html.jpg" class = "movie_row">
+                    <img src = "mov/css.jpg" class = "movie_row">
+                    <img src = "mov/javascript.jpg" class = "movie_row">
+                </div>
+            </div>
+
+            <script>
+                const nav = document.getElementById('toolbar');
+                window.addEventListener('scroll', () => {
+                    if(window.scrollY >= 100){
+                        nav.classList.add('nav_gold')
+                    } 
+                    else{
+                        nav.classList.remove('nav_gold')
+                    }
+                })
+            </script>
+
+    </body>

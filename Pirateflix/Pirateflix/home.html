@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv = "X-UA-Compatible" content="IE=edge"/>
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0"/>
+        <title>Pirateflix</title>
+        <link rel = "stylesheet" href="style.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="code.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+
+        <div class = "toolbar" id = "toolbar">
+            <img src = "mov/off.png" class = "toolbar_logo">
+            <label>
+                <output type="text" id = "tickets" value="0">
+            </label>
+            
+            <div class = "right_icons">
+                <img src = "mov/search.png" title = "search" class = "toolbar_signin">
+                <a class = "active" href="home.html">
+                    <img src = "mov/home.png"  title = "Home" class = "toolbar_signin"></a>
+                <a href="list.html">
+                    <img src = "mov/clapperboard.png" title = "My List" class="toolbar_signin"></a>
+                    <input type="image" name="tickets" src="mov/ticketss.png" title="Get Tickets" onclick = "incrementValue()" class="toolbar_signin">
+                <a href="about.html">
+                    <img src = "mov/ab.png" title = "More Info" class = "toolbar_signin"></a>
+
+                        <label>
+                            <output type="text" id = "tickets"  value="0">
+                        </label>
+
+                    
+                </div>
+            </div>
+        </div>
+
+        <!--HEADER-->
+        <div class = "heading">
+            <div class = "heading_container">
+                <h1 class = "heading_title"> Jurassic Bark</h1>
+                <div class = "heading_buttons">
+                    <button type = "button" id = "play" class="head_button">Play</button>
+                    <button class="head_button">My List</button>
+                </div>
+                <div class="head_desc">
+                    Movie plot would go in here ... just writing out contents for now to be updated later. A group of people go 
+                    to a cabin in the woods in the middle of nowhere and are taken away by a group of people that have lived there 
+                    for many years and ... blah blah blah blah blah
+                </div>
+            </div>
+            <div class="head_footer"></div>
+        </div>
+
+        <div class ="row">
+            <h2>My List </h2>
+            <div class = "movie_rows">
+            </div>
+        </div>
+        
+
+        <!--ORIGINALS-->
+        <div class ="row">
+            <h2>Pirateflix Originals</h2>
+            <div class = "movie_rows">
+                <img src = "mov/goodzilla.jpg"  class = "movie_row">
+                <img src = "mov/kingpong.jpg" class = "movie_row">
+                <img src = "mov/alpacolypse.jpg" class = "movie_row">
+                <img src = "mov/chew.jpg" class = "movie_row">
+                <img src = "mov/emo.jpg" class = "movie_row">
+                <img src = "mov/redshift.jpg" class = "movie_row">
+                <img src = "mov/ironingman.jpg" class = "movie_row">
+                <img src = "mov/yearzero.jpg"  class = "movie_row">
+                <img src = "mov/sodaban.jpg" class = "movie_row">
+                <img src = "mov/fasttoys.jpg" class = "movie_row">
+                <img src = "mov/oranges.jpg" class = "movie_row">
+                <img src = "mov/tryhard.png" class = "movie_row">
+                <img src = "mov/starshrek.jpg" class = "movie_row">
+            </div>
+        </div>
+        <!--TRENDING-->
+        <div class ="row">
+            <h2>Trending Now</h2>
+            <div class = "movie_rows">
+                <img src = "mov/frog.jpg"  class = "movie_row">
+                <img src = "mov/finallevel.jpg" class = "movie_row">
+                <img src = "mov/mission.jpg" class = "movie_row">
+                <img src = "mov/jurassic bark.jpg" class = "movie_row">
+                <img src = "mov/monopoly.jpg" class = "movie_row">
+                <img src = "mov/vhs.jpg" class = "movie_row">
+                <img src = "mov/oranges.jpg" class = "movie_row">
+                <img src = "mov/energizer.jpg"  class = "movie_row">
+                <img src = "mov/woody.jpg" class = "movie_row">
+                <img src = "mov/goodzilla.jpg" class = "movie_row">
+                <img src = "mov/freezing.jpg" class = "movie_row">
+                <img src = "mov/redshift.jpg" class = "movie_row">
+            </div>
+        </div>
+        <!--TOP RATED-->
+        <div class ="row">
+            <h2>Popular on Pirateflix</h2>
+            <div class = "movie_rows">
+                <img src = "mov/woody.jpg"  class = "movie_row">
+                <img src = "mov/crocodile.jpg" class = "movie_row">
+                <img src = "mov/starshrek.jpg" class = "movie_row">
+                <img src = "mov/childrenofcorn.jpg" class = "movie_row">
+                <img src = "mov/lordofthememes.jpg" class = "movie_row">
+                <img src = "mov/toyznthehood.jpg" class = "movie_row">
+                <img src = "mov/28days.jpg" class = "movie_row">
+                <img src = "mov/freddy.jpg"  class = "movie_row">
+                <img src = "mov/vhs.jpg" class = "movie_row">
+                <img src = "mov/sodaban.jpg" class = "movie_row">
+                <img src = "mov/alpacolypse.jpg" class = "movie_row">
+                <img src = "mov/frog.jpg" class = "movie_row">
+                <img src = "mov/ironingman.jpg" class = "movie_row">
+            </div>
+        </div>
+        <!--WORST-->
+        <div class ="row">
+            <h2>Pirated Movies</h2>
+            <div class = "movie_rows">
+                <img src = "mov/paws.jpg"  class = "movie_row">
+                <img src = "mov/hungerpains.jpg" class = "movie_row">
+                <img src = "mov/tryhard.png" class = "movie_row">
+                <img src = "mov/dadofdead.png" class = "movie_row">
+                <img src = "mov/freezing.jpg" class = "movie_row">
+                <img src = "mov/hungryhippos.jpeg" class = "movie_row">
+                <img src = "mov/chew.jpg" class = "movie_row">
+                <img src = "mov/woody.jpg"  class = "movie_row">
+                <img src = "mov/yearzero.jpg" class = "movie_row">
+                <img src = "mov/littlestcaesar.jpg" class = "movie_row">
+                <img src = "mov/ironingman.jpg" class = "movie_row">
+                <img src = "mov/lordofthememes.jpg" class = "movie_row">
+                <img src = "mov/toyznthehood.jpg" class = "movie_row">
+                <img src = "mov/jurassic bark.jpg" class = "movie_row">
+            </div>
+        </div>
+
+        <div class ="row">
+            <h2>New Releases</h2>
+            <div class = "movie_rows">
+                <img src = "mov/wendys.jpg"  class = "movie_row">
+                <img src = "mov/mrclean.jpg" class = "movie_row">
+                <img src = "mov/systemfailure.jpg" class = "movie_row">
+                <img src = "mov/littlestcaesar.jpg" class = "movie_row">
+                <img src = "mov/energizer.jpg" class = "movie_row">
+                <img src = "mov/freddy.jpg" class = "movie_row">
+                <img src = "mov/childrenofcorn.jpg" class = "movie_row">
+                <img src = "mov/fasttoys.jpg"  class = "movie_row">
+                <img src = "mov/finallevel.jpg" class = "movie_row">
+                <img src = "mov/woody.jpg" class = "movie_row">
+
+            </div>
+        </div>
+        <script>
+            const nav = document.getElementById('toolbar');
+            window.addEventListener('scroll', () => {
+                if(window.scrollY >= 100){
+                    nav.classList.add('nav_gold')
+                } 
+                else{
+                    nav.classList.remove('nav_gold')
+                }
+            })
+        </script>
+    </body>
+</html>
