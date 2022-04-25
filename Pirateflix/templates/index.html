@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv = "X-UA-Compatible" content="IE=edge"/>
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0"/>
+        <title>Pirateflix</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel = "stylesheet" href="/static/css/style.css">
+
+        <style>
+            input[type=submit]{
+                border: none;
+                color: transparent;
+            }
+
+            input.add-btn{
+                background-image: url("/static/img/addto.png");
+                background-color: transparent;
+                width: 55px;
+                height: 55px;
+                left: -202px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class = "toolbar" id = "toolbar">
+            <img src = "static/img/off.png" class = "toolbar_logo">
+
+            <div class = "right_icons">
+                <img src = "static/img/search.png" title = "Search" class = "toolbar_signin">
+                <a class = "active" href="/">
+                    <img src = "static/img/home.png"  title = "Home" class = "toolbar_signin"></a>
+                <a href="/list">
+                    <img src = "static/img/clapperboard.png" title = "My List" class="toolbar_signin"></a>
+
+                    <img src="static/img/ticketss.png" title="Get Tickets" class="toolbar_signin" data-toggle="modal" data-target="#exampleModalCenter">
+
+                <a href="https://github.com/sapphireten/webapps">
+                    <img src = "static/img/github.png" title = "GitHub" class = "toolbar_signin"></a>
+
+                <a href="/about">
+                    <img src = "static/img/ab.png" title = "More Info" class = "toolbar_signin"></a>
+                <label id = 'tick'>
+                    <output type="text" id = "tickets" value="1"> </label>
+                </div>
+            </div>
+        </div>
+
+        <!--HEADER-->
+        <div class = "heading">
+            <div class = "heading_container">
+                <h1 class = "heading_title"> Jurassic Bark</h1>
+                <div class = "heading_buttons">
+                    <button type = "button" id = "play" class="head_button">Play</button>
+                    <button class="head_button" id = "head_button" onclick="decrementValue(); eventHandler()">My List</button>
+                    <!--<button class="head_button" id = "head_button" onclick="decrementValue(); cantPlay(); eventHandler()">My List</button>-->
+                </div>
+                <div class="head_desc">
+                    A park once peaceful and calm becomes a park filled with dogs on the loose. Takes place at a local dog park where dogs take total control. These adorable puppers are out to create chaos and chase each
+                    other. It's a dogs world now. Will they get their treats?
+                </div>
+            </div>
+            <div class="head_footer">
+            </div>
+        </div>
+
+        <div class ="row">
+            <h2>My List </h2>
+            <div class = "movie_rows">
+                <div class = "movies">
+                    {%  for movie in myMov %}
+                    <img src = "{{ movie.image }}" class = "movie_row" class="img-fluid">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!--ORIGINALS-->
+        <div class ="row">
+            <h2>Pirateflix Originals</h2>
+            <div class = "movie_rows">
+                <div class = "movies">
+                    <img src = "static/img/goodzilla.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" id = 'play-btn' class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">-
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Goodzilla" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/goodzilla.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Big dino out to exterminate the human race due to being disturbed from his yearly sleep but ends up deciding to be a good dino in the end. " name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Action" name ="genre" readonly hidden/>
+                            <input id="year" value = "2045" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/kingpong.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "King Pong" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/kingpong.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Huge gorilla that has an addiction to playing ping pong and is determined to be the king of the sport." name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Action" name ="genre" readonly hidden/>
+                            <input id="year" value = "2025" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/alpacolypse.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Alpacolypse" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/alpacolypse.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="It's an Alpacalpyse instead of an apocalypse, these alpacas don't play around, you're going to wish it was a regular apocalypse." name ="desc" readonly hidden/>
+                            <input id="rating" value = "1/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Horror" name ="genre" readonly hidden/>
+                            <input id="year" value = "2100" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/chew.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Chew" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/chew.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="The sequel no one wanted, this hungry sibling of Jaws chews with his gums and whatever else he has in there." name ="desc" readonly hidden/>
+                            <input id="rating" value = "2/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Thriller" name ="genre" readonly hidden/>
+                            <input id="year" value = "2021" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/emo.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Emo Fish" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/emo.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Nemo's long lost cousin, Emo, spends his life alone in the water and does emo things, yep." name ="desc" readonly hidden/>
+                            <input id="rating" value = "3/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Adventure" name ="genre" readonly hidden/>
+                            <input id="year" value = "2050" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/redshift.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Red Shift" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/redshift.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Red shift, a movie filled of absolute horror. Don't close your eyes or you'll shift your perspective to red." name ="desc" readonly hidden/>
+                            <input id="rating" value = "1/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Horror" name ="genre" readonly hidden/>
+                            <input id="year" value = "1980" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/ironingman.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Ironing Man" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/ironingman.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="The big scary Iron Man picks up a side job to pay for his luxurious lifestyle. Ironing on the weekends is what this superhero has to do to live lavishly." name ="desc" readonly hidden/>
+                            <input id="rating" value = "6/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Action" name ="genre" readonly hidden/>
+                            <input id="year" value = "2120" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/yearzero.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Year Zero" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/yearzero.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Year Zero, a kids adventure movie that takes place in the beginning of time." name ="desc" readonly hidden/>
+                            <input id="rating" value = "1/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Comedy" name ="genre" readonly hidden/>
+                            <input id="year" value = "2025" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/sodaban.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Soda Ban" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/sodaban.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="In this movie, a man is determined in banning sugary sweets because ... calories." name ="desc" readonly hidden/>
+                            <input id="rating" value = "0/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Action" name ="genre" readonly hidden/>
+                            <input id="year" value = "2000" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/fasttoys.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Fast Toys (Extended)" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/fasttoys.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="The well known toys have grown up too fast and who would have guessed they'd spend their weekends partying and drinking." name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Fantasy" name ="genre" readonly hidden/>
+                            <input id="year" value = "2031" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/tryhard.png"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Try Hard" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/tryhard.png" name ="image" readonly hidden/>
+                            <input id="desc" value="This movie will make you sweat and have your heart pumping from watching these try hards battle for first place." name ="desc" readonly hidden/>
+                            <input id="rating" value = "2/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Horror" name ="genre" readonly hidden/>
+                            <input id="year" value = "2020" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/starshrek.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Star Shrek" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/starshrek.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Shrek gets tired of his married life with Fiona, so he joins the space crew." name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Sci-Fi" name ="genre" readonly hidden/>
+                            <input id="year" value = "2400" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/oranges.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Oranges" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/oranges.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Oranges, oranges, oranges, oranges, oranges, and more oranges." name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Romance" name ="genre" readonly hidden/>
+                            <input id="year" value = "1980" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+
+
+            </div>
+        </div>
+        <!--TRENDING-->
+        <div class ="row">
+            <h2>Trending Now</h2>
+            <div class = "movie_rows">
+                <div class="movies">
+                    <img src = "static/img/frog.jpg"  class = "movie_row" class = "img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Frog" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/frog.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="The frog is out to do one thing and one thing only. To save humanity ... even if he isn't human." name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Western" name ="genre" readonly hidden/>
+                            <input id="year" value = "2070" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/finallevel.jpg"  class = "movie_row" class = "img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Final Level" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/finallevel.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Final level, the most difficult, complicated, vigorous, exhausting, strenuous, and impossible of all levels. " name ="desc" readonly hidden/>
+                            <input id="rating" value = "3/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Sci-Fi" name ="genre" readonly hidden/>
+                            <input id="year" value = "2011" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/mission.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Mission" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/mission.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="In this horror movie, the only mission is to stop the zombies from exterminating the entire population." name ="desc" readonly hidden/>
+                            <input id="rating" value = "4/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Horror" name ="genre" readonly hidden/>
+                            <input id="year" value = "2099" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/jurassic bark.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Jurassic Bark" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/jurassic bark.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="A park filled with dogs on the loose. Takes place at a local dog park where dogs have control." name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Sci-Fi" name ="genre" readonly hidden/>
+                            <input id="year" value = "2024" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/monopoly.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "monopoly" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/monopoly.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Monopoly in real life is really just real life, just a much longer version." name ="desc" readonly hidden/>
+                            <input id="rating" value = "1/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Adventure" name ="genre" readonly hidden/>
+                            <input id="year" value = "2016" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/vhs.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "VHS" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/vhs.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="You can't rewind. All the recorded footage is history." name ="desc" readonly hidden/>
+                            <input id="rating" value = "2/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Horror" name ="genre" readonly hidden/>
+                            <input id="year" value = "2025" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/oranges.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" class = "img-fluid">
+
+                </div>
+                <div class="movies">
+                    <img src = "static/img/energizer.jpg"  class = "movie_row" class = "img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "The Energizer" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/energizer.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Man in a bunny costume goes around town serving as a backup generator to provide power after the hurricane wiped out their energy sources." name ="desc" readonly hidden/>
+                            <input id="rating" value = "4/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Action" name ="genre" readonly hidden/>
+                            <input id="year" value = "2021" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/woody.jpg"  class = "movie_row" class = "img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Woody (Extended)" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/woody.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Woody's girlfriend leaves him for Buzz. Woody goes on a rampage to exterminate both of his best friends. " name ="desc" readonly hidden/>
+                            <input id="rating" value = "4/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Horror" name ="genre" readonly hidden/>
+                            <input id="year" value = "2200" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/lordofthememes.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Lord of the Memes" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/lordofthememes.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Memes on memes. It's memes and more memes. Memes." name ="desc" readonly hidden/>
+                            <input id="rating" value = "-1/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Adventure" name ="genre" readonly hidden/>
+                            <input id="year" value = "2011" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/freezing.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Freezing" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/freezing.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="A lady for some reason is obsessed with freezing everything around her. Goodbye summer." name ="desc" readonly hidden/>
+                            <input id="rating" value = "10/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Fantasy" name ="genre" readonly hidden/>
+                            <input id="year" value = "2023" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+        </div>
+    </div>
+        <div class ="row">
+            <h2>Popular on Pirateflix</h2>
+            <div class = "movie_rows">
+                <div class="movies">
+                    <img src = "static/img/tryhard.png"  class = "movie_row" class = "img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" class = "img-fluid">
+                </div>
+                <div class="movies">
+                    <img src = "static/img/freddy.jpg"  class = "movie_row" class = "img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" class = "movie_row" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Freddy vs. The Board of Education " name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/freddy.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Two villains with an unnecessary feud take their fight to court, but they end up fighting the court in the end." name ="desc" readonly hidden/>
+                            <input id="rating" value = "-2/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Horror" name ="genre" readonly hidden/>
+                            <input id="year" value = "2080" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/crocodile.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Crocodile Dentist" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/crocodile.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="A dentist for crocodiles has to spend endless hours cleaning crocodile's teeth for a living." name ="desc" readonly hidden/>
+                            <input id="rating" value = "4.9/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Action" name ="genre" readonly hidden/>
+                            <input id="year" value = "2125" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/childrenofcorn.jpg" class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Children of the Corn" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/childrenofcorn.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Hungry kids that have an addiction for corn dogs. They won't eat them without mustard on top." name ="desc" readonly hidden/>
+                            <input id="rating" value = "7/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Horror" name ="genre" readonly hidden/>
+                            <input id="year" value = "2015" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/littlestcaesar.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "The Littlest Caesar" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/littlestcaesar.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="Josh finds the smallest pizza and is awarded unlimited pizza for life and a million dollars." name ="desc" readonly hidden/>
+                            <input id="rating" value = "0.1/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Classical" name ="genre" readonly hidden/>
+                            <input id="year" value = "1870" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/toyznthehood.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "Toyz n the Hood" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/toyznthehood.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="In a time before the toys found their home with Andy, they lived a very different lifestyle. Not suitable for kids." name ="desc" readonly hidden/>
+                            <input id="rating" value = "7/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Action" name ="genre" readonly hidden/>
+                            <input id="year" value = "2031" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/iphone.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <form method="post" action="/post_movie">
+                            <input id="name" value = "iPhone" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/iphone.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="In another dimension, Bill Gates is the founder of the new iPhone. All iPhones come preinstalled with Office." name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Classical" name ="genre" readonly hidden/>
+                            <input id="year" value = "2001" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/28days.jpg"  class = "movie_row" class = "img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                     <form method="post" action="/post_movie">
+                            <input id="name" value = "28 Days" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/28days.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="28 days late is a documentary aimed at young teens. Please be careful." name ="desc" readonly hidden/>
+                            <input id="rating" value = "1/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Adventure" name ="genre" readonly hidden/>
+                            <input id="year" value = "2022" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/mrclean.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                        <form method="post" action="/post_movie">
+                            <input id="name" value = "Mr. Clean" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/mrclean.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="He loves cleaning. He won't stop unless everything is clean. " name ="desc" readonly hidden/>
+                            <input id="rating" value = "2/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Action" name ="genre" readonly hidden/>
+                            <input id="year" value = "2055" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class="movies">
+                    <img src = "static/img/jurassic bark.jpg"  class = "movie_row">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" value="_" class = "img-fluid">
+                </div>
+        </div>
+    </div>
+
+
+        </div>
+        <!--WORST-->
+        <div class ="row">
+            <h2>Pirated Movies</h2>
+            <div class = "movie_rows">
+                <div class = "movies">
+                    <img src = "static/img/paws.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                     <form method="post" action="/post_movie">
+                            <input id="name" value = "Paws" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/paws.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="This bootleg movie comes from another bootleg movie 'Chew'. Skip this movie." name ="desc" readonly hidden/>
+                            <input id="rating" value = "9/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Thriller" name ="genre" readonly hidden/>
+                            <input id="year" value = "2000" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/hungerpains.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                     <form method="post" action="/post_movie">
+                            <input id="name" value = "Hunger Pains (Sequel)" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/hungerpains.jpg" name ="image" readonly hidden/>
+                            <input id="desc" value="asljkfdjlksadjflksdjlkfjlkafjldsjflajdfldjlfklasjfndsfohoeohffeawf" name ="desc" readonly hidden/>
+                            <input id="rating" value = "5/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Sports" name ="genre" readonly hidden/>
+                            <input id="year" value = "2019" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/starshrek.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" class = "img-fluid">
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/dadofdead.png" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                     <form method="post" action="/post_movie">
+                            <input id="name" value = "Dad of the Dead" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/dadofdead.png" name ="image" readonly hidden/>
+                            <input id="desc" value="What is this title? If you somehow managed to find this. Congrats." name ="desc" readonly hidden/>
+                            <input id="rating" value = "1/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "War" name ="genre" readonly hidden/>
+                            <input id="year" value = "2018" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/freezing.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" class = "img-fluid">
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/hungryhippos.jpeg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                     <form method="post" action="/post_movie">
+                            <input id="name" value = "Hungry Hungry Hippos" name ="name" readonly hidden/>
+                            <input id="image" value = "/static/img/hungryhippos.jpeg" name ="image" readonly hidden/>
+                            <input id="desc" value="Hungry hippos that just want to be fed. That's all they want, food." name ="desc" readonly hidden/>
+                            <input id="rating" value = "10/5" name ="rating" readonly hidden/>
+                            <input id="genre" value = "Comedy" name ="genre" readonly hidden/>
+                            <input id="year" value = "2023" name ="year" readonly hidden/>
+                            <input type = "submit" class="add-btn" class="img-fluid"/>
+                        </form>
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/kingpong.jpg" class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" class = "img-fluid">
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/yearzero.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" class = "img-fluid">
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/ironingman.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" class = "img-fluid">
+                </div>
+                <div class = "movies">
+                    <img src = "static/img/lordofthememes.jpg"  class = "movie_row" class ="img-fluid">
+                    <img src =  "static/img/play-button.png" class = "play-btn" class = "img-fluid" onclick="decrementValue(); eventHandler()" data-toggle="modal" data-target="#modaltrailer">
+                    <img src = "static/img/addto.png" class = "add-btn" class = "img-fluid">
+                </div>
+        </div>
+</div>
+
+
+        <div class="modal fade" id="modaltrailer">
+            <!-- This means this is a bootstrap modal -->
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <video width = "100%" controls preload="auto">
+                      <source src="static/img/movieintro.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="exampleModalCenter" tableindex = " -1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <!-- This means this is a bootstrap modal -->
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle"><b>Get Movie Tickets?</b> <img src="static/img/ticket.png"> </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p>Watch ad for 1 credit: </p>
+                    <video id="myVideo" width="100%">
+                        <source src = "static/img/skittles.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="playVid(); incrementValue(); eventHandler()">Play AD</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script src="static/js/code.js"></script>
+    </body>
+</html>

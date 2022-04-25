@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Pirateflix List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="/static/css/tablestyle.css">
+      <link rel = "stylesheet" href="/static/css/style.css">
+      <link href='https://fonts.googleapis.com/css?family=Bubblegum Sans' rel='stylesheet'>
+
+
+	</head>
+
+    <body style= "background: linear-gradient(
+            to right, #33007a, #4a10ff,
+             #ffad00, #ffaf1c)">
+
+    <div class = "toolbar" id = "toolbar">
+            <img src = "static/img/off.png" class = "toolbar_logo">
+            <div class = "right_icons">
+                <img src = "static/img/search.png" title = "search" class = "toolbar_signin">
+                <a href="/">
+                    <img src = "static/img/home.png" title = "Home" class = "toolbar_signin"></a>
+                <a class = "active" href="/list">
+                    <img src = "static/img/clapperboard.png" title = "My List" class="toolbar_signin"></a>
+                <a href="https://github.com/sapphireten/webapps">
+                    <img src = "static/img/github.png" title = "GitHub" class = "toolbar_signin"></a>
+                <a href="/about">
+                    <img src = "static/img/ab.png" title = "More Info" class = "toolbar_signin"></a>
+            </div>
+        </div>
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+                <div class="waviy">
+                <span style="--i:1">M</span>
+                <span style="--i:2">Y</span>
+                <span style="--i:3">M</span>
+                <span style="--i:4">O</span>
+                <span style="--i:5">V</span>
+                <span style="--i:6">I</span>
+                <span style="--i:7">E</span>
+                <span style="--i:8">L</span>
+                <span style="--i:9">I</span>
+                <span style="--i:10">S</span>
+                <span style="--i:11">T</span>
+                </div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-primary">
+						    <tr>
+						    	<th>Movie Cover</th>
+						    	<th>Movie Title & Synopsis</th>
+						      <th>Rating</th>
+						      <th>Genre</th>
+						      <th>Release Year</th>
+						      <th>&nbsp;</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+                          {% for movie in movies %}
+						    <tr class="alert" role="alert">
+						    	<td>
+						    		<div class="img" style="background-image: url({{ movie.image }}")></div>
+						    	</td>
+						      <td>
+						      	<div class="email">
+						      		<span> {{ movie.name }}</span>
+						      		<span>{{ movie.desc }}</span>
+						      	</div>
+						      </td>
+						      <td>
+                                  <div>
+                                      {{ movie.rating}}
+                                      <img src="/static/img/star.png" class="star" width="20px" height="20px" style="top: 40px" >
+                                  </div>
+                              </td>
+                                <td>{{ movie.genre }}</td>
+				          <td>{{ movie.year }}</td>
+						      <td>
+						      	<a href="/remove_movie/{{ movie.id }}" class="close" data-dismiss="alert" aria-label="Close" </a>
+				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
+				          	</button>
+				        	</td>
+						    </tr>
+                          {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+            const nav = document.getElementById('toolbar');
+            window.addEventListener('scroll', () => {
+                if(window.scrollY >= 100){
+                    nav.classList.add('nav_purple')
+                }
+                else{
+                    nav.classList.remove('nav_purple')
+                }
+            })
+        </script>
+
+	</body>
+</html>
+

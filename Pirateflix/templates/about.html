@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv = "X-UA-Compatible" content="IE=edge"/>
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0"/>
+        <title>Pirateflix</title>
+        <link rel = "stylesheet" href="/static/css/style.css">
+    </head>
+    <!--DON'T FORGET TO MAKE THIS CLASS ACTIVE VICE VERSA-->
+    <body>
+        <div class = "toolbar" id = "toolbar">
+            <img src = "static/img/off.png" class = "toolbar_logo">
+            <div class = "right_icons">
+                <img src = "static/img/search.png" title = "search" class = "toolbar_signin">
+                <a href="/">
+                    <img src = "static/img/home.png" title = "Home" class = "toolbar_signin"></a>
+                <a href="/list">
+                    <img src = "static/img/clapperboard.png" title = "My List" class="toolbar_signin"></a>
+                <a href="https://github.com/sapphireten/webapps">
+                    <img src = "static/img/github.png" title = "GitHub" class = "toolbar_signin"></a>
+                <a class = "active" href="/about">
+                    <img src = "static/img/ab.png" title = "More Info" class = "toolbar_signin"></a>
+            </div>
+        </div>
+
+            <div class = "heading_about">
+                <div class = "heading_container_about">
+                    <h1 class = "heading_title_about"> More Information</h1>
+                    <div class = "heading_buttons_about">
+                        <button class="head_button">Play</button>
+                        <button class="head_button">My List</button>
+                    </div>
+                    <div class="head_desc_about">
+                        This movie contains additional information about this project. It includes the motivation behind the project,
+                        additional information about the authors, and some behind the scenes of the sources used in the
+                        creation of the project.
+                    </div>
+                </div>
+                <div class="head_footer_about"></div>
+            </div>
+
+            <div class="row">
+                <h2>Project Motivation</h2>
+                <div class = "movie_rows">
+                    <img src = "static/img/p1.jpg" class = "movie_rowabout">
+                    <img src = "static/img/p3.jpg" class = "movie_rowabout">
+                    <img src = "static/img/p4.jpg" class = "movie_rowabout">
+                    <img src = "static/img/p5.jpg" class = "movie_rowabout">
+                    <img src = "static/img/p6.jpg" class = "movie_rowabout">
+                    <img src = "static/img/p7.jpg" class = "movie_rowabout">
+                    <img src = "static/img/p8.jpg" class = "movie_rowabout">
+                    <img src = "static/img/p9.jpg" class = "movie_rowabout">
+                </div>
+            </div>
+
+            <div class="row">
+                <h2>Movie Producers</h2>
+                <div class = "movie_rows">
+                    <div class="moviesAbout">
+                        <a href="http://myweb.ecu.edu/student/mendozaj17">
+                        <img src = "static/img/juanmov.jpg" class = "movie_row_about"></a>
+                    </div>
+                    <div class="moviesAbout">
+                        <a href="http://myweb.ecu.edu/student/mirandab19">
+                        <img src = "static/img/brandonmov.png" class = "movie_row_about"></a>
+                    </div>
+                    <div class="moviesAbout">
+                        <a href="http://myweb.ecu.edu/student/baiga19">
+                        <img src = "static/img/ahmedmov.jpg" class = "movie_row_about"></a>
+                    </div>
+
+                    <!--
+                    <img src = "static/img/juanmov.jpg" a href ="http://myweb.ecu.edu/student/mendozaj17" class = "movie_rowabout">
+                    <img src = "static/img/brandonmov.png" class = "movie_rowabout">
+                    <img src = "static/img/ahmedmov.jpg" class = "movie_rowabout">-->
+                </div>
+            </div>
+
+            <div class = "row">
+                <h2>Credits</h2>
+                <div class = "movie_rows">
+                    <img src = "static/img/Netflix.jpg" class = "movie_rowabout">
+                    <img src = "static/img/hulu.jpg" class = "movie_rowabout">
+                    <img src = "static/img/pixlr.jpg" class = "movie_rowabout">
+                    <img src = "static/img/gizmodo.jpg" class = "movie_rowabout">
+                    <img src = "static/img/html.jpg" class = "movie_rowabout">
+                    <img src = "static/img/css.jpg" class = "movie_rowabout">
+                    <img src = "static/img/javascript.jpg" class = "movie_rowabout">
+                </div>
+            </div>
+
+            <script>
+                const nav = document.getElementById('toolbar');
+                window.addEventListener('scroll', () => {
+                    if(window.scrollY >= 100){
+                        nav.classList.add('nav_gold')
+                    }
+                    else{
+                        nav.classList.remove('nav_gold')
+                    }
+                })
+            </script>
+
+    </body>
