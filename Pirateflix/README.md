@@ -1,8 +1,8 @@
-Example 36: This project shows how to avoid repeat the same code when you have a nevigation bar for multiple pages.
 
 ## Quick Start
 ### Local Test Setup
-First, we need to install a Python 3 virtual environment with:
+First, 
+
 ```
 sudo apt-get install python3-venv
 ```
